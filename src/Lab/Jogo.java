@@ -43,11 +43,47 @@ public class Jogo {
 		this.tipo = tipo;
 		this.categorias = categoria;
 	}	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((categorias == null) ? 0 : categorias.hashCode());
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Jogo other = (Jogo) obj;
+		if (categorias == null) {
+			if (other.categorias != null)
+				return false;
+		} else if (!categorias.equals(other.categorias))
+			return false;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
+		if (tipo == null) {
+			if (other.tipo != null)
+				return false;
+		} else if (!tipo.equals(other.tipo))
+			return false;
+		return true;
+	}
 	/**
 	 * Registra uma jogada, atualizando vezes concluidas e score máximo se necessário.
 	 * @param score Pontuação obtida na jogada.
 	 * @param win Se o jogador concluiu o jogo ou não.
-	 * @return A pontuação obtida na jogada.
+	 * @return pontuação x2p que tenho que descobrir oque é e ver etc etc
 	 */
 	private int registraJogada(int score, boolean win) {
 		this.adicionaJogada();
