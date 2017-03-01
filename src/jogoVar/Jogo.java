@@ -1,8 +1,13 @@
 package jogoVar;
 
+import java.util.HashSet;
 import java.util.Set;
 
-import Lab.Jogabilidade;
+import lab.Jogabilidade;
+
+import checks.Check;
+import excessões.StringInvalida;
+import excessões.ValorInvalido;
 
 /**
  * Classe que representa um jogo.
@@ -38,11 +43,21 @@ public abstract class Jogo {
 	 * Construtor.
 	 * @param nome Nome do jogo.
 	 * @param categoria Categorias à que o jogo pertence.
+	 * @throws StringInvalida 
 	 */
-	
-	public Jogo(String nome, Set<Jogabilidade> categoria){
+	/**
+	 * Construtor.
+	 * @param nome Nome do Jogo.
+	 * @param categoria Set de categorias a quais o jogo pertence.
+	 * @throws Exception Lança excessões para nome inválido ou se o set for nulo.
+	 */
+	public Jogo(String nome, Set<Jogabilidade> categoria,double preco) throws StringInvalida, ValorInvalido{
+		if( Check.ValorError(preco)) throw new ValorInvalido("Preco invalido");
+		if (Check.StringError(nome)) throw new StringInvalida("Nome de jogo inválido");
+		if (Check.NullError(categoria)|| Check.NullError(nome)) throw new NullPointerException("Categoria nula");
 		this.nome = nome;
 		this.categorias = categoria;
+		this.preco= (int) preco;
 	}	
 	
 	/**
@@ -133,5 +148,16 @@ public abstract class Jogo {
 
 	public int getPreco() {
 		return preco;
+	}
+
+	public String toString(String aux) {
+		return "+ "+ this.nome + " - " + aux + ":\n" + "==> Jogou " +  
+				this.getVezesJogadas() + " vez(es)\n==> Zerou " 
+				+ this.getVezesConcluidas() + " vez(es)\n==> Maior Score:  " + this.getPontuacaoMaxima()
+				+ "\n";
+	}
+
+	public Set<Jogabilidade> getCategorias() {
+		return categorias;
 	}
 }

@@ -1,4 +1,5 @@
-package Lab;
+package lab;
+
 
 public enum Jogabilidade {
 	ONLINE("Online"), OFFLINE("Offline"), MULTIPLAYER("Multiplayer"), COOPERATIVO("Cooperativo"), COMPETITIVO("Competitivo");
@@ -11,7 +12,8 @@ public enum Jogabilidade {
 	 * Construtor.
 	 * @param categoria
 	 */
-	Jogabilidade(String categoria){
+	Jogabilidade(String categoria) {
 		this.categoria = categoria;
 	}
 }
+

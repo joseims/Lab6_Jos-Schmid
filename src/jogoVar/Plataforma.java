@@ -2,12 +2,18 @@ package jogoVar;
 
 import java.util.Set;
 
-import Lab.Jogabilidade;
+import lab.Jogabilidade;
+
 
 
 public class Plataforma extends Jogo {
-	public Plataforma(String nome, Set<Jogabilidade> categoria) {
-		super(nome, categoria);
+	/**
+	 * {@inheritDoc}
+	 * @author joseims
+	 *
+	 */
+	public Plataforma(String nome, Set<Jogabilidade> categoria,double preco) throws Exception{
+		super(nome, categoria, preco);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -21,6 +27,10 @@ public class Plataforma extends Jogo {
 		if (score > this.pontuacaoMaxima) {this.setPontuacaoMaxima(score);}
 		if (win) { this.adicionaConclusao();x2p += 20;}
 		return x2p;
+		
+	}
+	public String toString(){
+		return super.toString("Plataforma");
 		
 	}
 }

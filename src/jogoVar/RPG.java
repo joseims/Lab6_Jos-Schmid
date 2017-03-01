@@ -2,13 +2,18 @@ package jogoVar;
 
 import java.util.Set;
 
-import Lab.Jogabilidade;
+import lab.Jogabilidade;
+
 
 
 public class RPG extends Jogo {
-
-	public RPG(String nome, Set<Jogabilidade> categoria) {
-		super(nome, categoria);
+	/**
+	 * {@inheritDoc}
+	 * @author joseims
+	 *
+	 */
+	public RPG(String nome, Set<Jogabilidade> categoria,double preco)throws Exception {
+		super(nome, categoria, preco);
 	}
 	/**
 	 * {@inheritDoc}
@@ -21,6 +26,11 @@ public class RPG extends Jogo {
 		if (score > this.pontuacaoMaxima) {this.setPontuacaoMaxima(score);}
 		if (win) { this.adicionaConclusao();}
 		return x2p;
+		
+	}
+	
+	public String toString(){
+		return super.toString("RPG");
 		
 	}
 }

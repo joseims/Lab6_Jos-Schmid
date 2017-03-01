@@ -25,4 +25,8 @@ public abstract class Papel {
 	public abstract double getMultiplicadorPontoCompra();
 	
 	public abstract String getPapel();
+	
+	public abstract int hashCode();
+	
+	public abstract boolean equals(Object ob);
 }

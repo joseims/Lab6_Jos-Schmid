@@ -1,13 +1,21 @@
 package jogoVar;
 
+
+
 import java.util.Set;
 
-import Lab.Jogabilidade;
+import lab.Jogabilidade;
 
+import excessões.PontMaxInvalida;
+/**
+ * {@inheritDoc}
+ * @author joseims
+ *
+ */
 public class Luta extends Jogo {
-	int MAX =100000;
-	public Luta(String nome, Set<Jogabilidade> categoria) {
-		super(nome, categoria);
+	double MAX = 100000;
+	public Luta(String nome, Set<Jogabilidade> categoria,double preco) throws Exception {
+		super(nome, categoria, preco);
 	}
 	/**
 	 * {@inheritDoc}
@@ -15,12 +23,17 @@ public class Luta extends Jogo {
 	 */
 	@Override
 	public int registraJogada(int score, boolean win)throws Exception {
-		if (score > MAX)  throw new Exception("Score inválido");
+		if (score > MAX)  throw new PontMaxInvalida("Score inválido");
 		this.adicionaJogada();
 		if (score > this.pontuacaoMaxima) {this.setPontuacaoMaxima(score);}
 		if (win) { this.adicionaConclusao();}
 		int x2p = score/1000;
 		return x2p ;
+		
+	}
+	
+	public String toString(){
+		return super.toString("Luta");
 		
 	}
 
